@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>BlackCat.png</file>
+        <file>Mickey Mouse.png</file>
+        <file>Tom.png</file>
+        <file>HaiMianBB.png</file>
+    </qresource>
+</RCC>
