@@ -136,17 +136,17 @@ Widget::Widget(QWidget *parent)
     salaryDataItem = new QStandardItem;
     identityDataItem = new QStandardItem;
     standItemModel->setItem(0,0,nameItem);
-     standItemModel->setItem(1,0,genderItem);
-     standItemModel->setItem(2,0,accountItem);
+    standItemModel->setItem(1,0,genderItem);
+    standItemModel->setItem(2,0,accountItem);
     standItemModel->setItem(3,0,passwordItem);
-     standItemModel->setItem(4,0,jobItem);
-     standItemModel->setItem(5,0,salaryItem);
-     standItemModel->setItem(6,0,identityItem);
-     //检测连接服务器是否成功
-     connect(socket,&QTcpSocket::connected,this,[=](){qDebug()<<"成功连接服务器";});
+    standItemModel->setItem(4,0,jobItem);
+    standItemModel->setItem(5,0,salaryItem);
+    standItemModel->setItem(6,0,identityItem);
+    //检测连接服务器是否成功
+    connect(socket,&QTcpSocket::connected,this,[=](){qDebug()<<"成功连接服务器";});
     //发送添加请求
-     connect(adBtn,&QPushButton::clicked,this,[=]()
-     {
+    connect(adBtn,&QPushButton::clicked,this,[=]()
+    {
          if(nameEdit->text().isEmpty() || genderEdit->text().isEmpty() || accountEdit->text().isEmpty()
              || passwdEdit->text().isEmpty() || jobEdit->text().isEmpty() || salaryEdit->text().isEmpty())
          {
@@ -163,15 +163,15 @@ Widget::Widget(QWidget *parent)
         jsonObject.insert("salary",salaryEdit->text());
         QJsonDocument jsonDocument(jsonObject);
         socket->write(jsonDocument.toJson());
-     });
-     //发送删除请求
-     connect(deleteAccountBtn,&QPushButton::clicked,this,[=]()
-     {
-         if(deleteAccountEdit->text().isEmpty())
-         {
-             QMessageBox::information(deleteChildWidget,"提示","账号不能为空",QMessageBox::Ok);
-             return;
-         }
+    });
+    //发送删除请求
+    connect(deleteAccountBtn,&QPushButton::clicked,this,[=]()
+    {
+        if(deleteAccountEdit->text().isEmpty())
+        {
+            QMessageBox::information(deleteChildWidget,"提示","账号不能为空",QMessageBox::Ok);
+            return;
+        }
         QJsonObject jsonObject;
         jsonObject.insert("option",2);
         jsonObject.insert("account",deleteAccountEdit->text());
@@ -332,7 +332,6 @@ Widget::Widget(QWidget *parent)
                 break;
         }
     });
-
 }
 
 Widget::~Widget()
@@ -399,10 +398,6 @@ void Widget::showCheckMsg(QJsonObject checkMsg)
     tableView->setModel(standItemModel);
     tableView->show();
 }
-
-
-
-
 //连接服务器
 void Widget::on_pushButton_clicked()
 {
@@ -434,7 +429,7 @@ void Widget::on_pushButton_clicked()
                      }
                 }
 
-            });
+    });
     imageLabel->setFixedSize(90,90);
     imageLabel->setPixmap(QPixmap(":/Tom.png"));
     imageLabel->setScaledContents(true);
